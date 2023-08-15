@@ -1,13 +1,31 @@
 <nz-card nzTitle="Reservar Hotel" nzBorderless>
-  <form nz-form nzLayout="vertical">
+  <form nz-form nzLayout="vertical" (ngSubmit)="onSearchCity($event)">
     <nz-form-item>
       <nz-form-label nzFor="city">Destino</nz-form-label>
       <nz-form-control>
-        <input nz-input name="city" id="city" />
+        <input
+          nz-input
+          [nzAutocomplete]="auto"
+          [(ngModel)]="inputValue"
+          name="city"
+          id="city"
+          (input)="onChangeCityValue($event)"
+        />
+        <nz-autocomplete
+          [nzDataSource]="options"
+          nzBackfill
+          #auto
+        ></nz-autocomplete>
       </nz-form-control>
     </nz-form-item>
     <div nz-row nzJustify="end">
-      <button nz-button nzType="primary" nzShape="round" nzSize="large">
+      <button
+        nz-button
+        nzType="primary"
+        nzShape="round"
+        nzSize="large"
+        [disabled]="!inputValue"
+      >
         Alterar busca
       </button>
     </div>
