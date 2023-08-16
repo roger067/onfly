@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-hotel-card',
+  encapsulation: ViewEncapsulation.None,
   templateUrl: './hotel-card.component.html',
   styleUrls: ['./hotel-card.component.scss'],
 })

@@ -1,11 +1,13 @@
 <nz-card nzBorderless [nzBodyStyle]="{ padding: 0 }">
   <div nz-row>
     <div nz-col nzSpan="8">
-      <!--<nz-carousel nzEffect="fade">
+      <nz-carousel nzEffect="fade">
         <div nz-carousel-content *ngFor="let image of hotel.images">
-          <img [src]="image" />
+          <div class="image-wrapper">
+            <img [src]="image" alt="hotel" />
+          </div>
         </div>
-      </nz-carousel>-->
+      </nz-carousel>
     </div>
     <div nz-col nzSpan="10" class="card-details">
       <h3 nz-typography>{{ hotel.name }}</h3>
