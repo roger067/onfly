@@ -12,12 +12,14 @@ import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-and-navigation.component';
+import { HotelCardComponent } from './hotel-card/hotel-card.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,7 @@ import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-
     NavbarComponent,
     SearchHotelComponent,
     FiltersAndNavigationComponent,
+    HotelCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,7 @@ import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-
     NzTypographyModule,
     NzDropDownModule,
     NzIconModule,
+    NzCarouselModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

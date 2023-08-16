@@ -2,7 +2,12 @@
 
 html body {
   background-color: #f7f7f7;
+  color: #7e7e7e;
   margin: 0;
+}
+
+.ant-btn.ant-btn-round.ant-btn-lg {
+  padding: 6.4px 48px;
 }
 
 .container {

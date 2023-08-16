@@ -5,8 +5,8 @@
     <nz-breadcrumb-item>Hospedagem em</nz-breadcrumb-item>
   </nz-breadcrumb>
   <div>
-    <span nz-typography>Organizado por</span
-    ><a nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+    <span nz-typography>Organizado por</span>
+    <a nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
       <i>{{ orderBy === "price" ? "Recomendados" : "Melhor avaliados" }}</i>
       <span nz-icon nzType="down"></span>
     </a>
