@@ -7,20 +7,18 @@ import { Component } from '@angular/core';
 })
 export class SearchHotelComponent {
   inputValue?: string;
-  options: string[] = [];
+  filteredOptions: string[] = [];
+  options = ['Belo Horizonte', 'Rio de Janeiro', 'São Paulo'];
 
-  onSearchCity(event: FormDataEvent) {
-    event.preventDefault();
+  constructor() {
+    this.filteredOptions = this.options;
   }
 
-  onChangeCityValue(e: Event) {
-    const value = (e.target as HTMLInputElement).value;
-    this.options = value
-      ? ['Belo Horizonte', 'Rio de Janeiro', 'São Paulo'].filter((city) =>
-          city.includes(value)
-        )
-      : [];
+  onSearchCity() {}
 
-    this.inputValue = value;
+  onChangeCityValue(value: string) {
+    this.filteredOptions = this.options.filter(
+      (option) => option.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    );
   }
 }
