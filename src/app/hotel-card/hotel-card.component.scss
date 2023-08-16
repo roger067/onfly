@@ -20,12 +20,17 @@
     .ant-rate {
       display: flex;
       align-items: center;
-      margin: 0 8px;
+      gap: 4px;
+      margin: 0 12px 0 8px;
+
+      .ant-rate-star {
+        margin: 0;
+      }
     }
 
     .ant-rate,
     small {
-      font-size: 12px;
+      font-size: 11px;
     }
   }
 
@@ -56,6 +61,23 @@
     padding: 2px 20px;
     display: inline-block;
     margin-top: 8px;
+  }
+
+  .stars-group,
+  .amenities {
+    display: flex;
+    align-items: center;
+  }
+
+  .amenities {
+    border-left: 1px solid #7e7e7e;
+    padding: 0 12px;
+    gap: 8px;
+
+    .anticon {
+      color: #7e7e7e;
+      font-size: 16px;
+    }
   }
 
   .slick-list,

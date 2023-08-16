@@ -11,9 +11,14 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
-import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRateModule } from 'ng-zorro-antd/rate';
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+
+import { IconDefinition } from '@ant-design/icons-angular';
+import * as AllIcons from '@ant-design/icons-angular/icons';
+
+import { NzIconModule, NZ_ICONS } from 'ng-zorro-antd/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +26,15 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-and-navigation.component';
 import { HotelCardComponent } from './hotel-card/hotel-card.component';
+
+const antDesignIcons = AllIcons as {
+  [key: string]: IconDefinition;
+};
+
+const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => {
+  const i = antDesignIcons[key];
+  return i;
+});
 
 @NgModule({
   declarations: [
@@ -47,8 +61,14 @@ import { HotelCardComponent } from './hotel-card/hotel-card.component';
     NzIconModule,
     NzCarouselModule,
     NzRateModule,
+    NzToolTipModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: NZ_ICONS,
+      useValue: icons,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

@@ -61,6 +61,12 @@ export class HotelCardComponent {
     price: 100,
   };
 
+  amenities: { [key: string]: string } = {
+    WI_FI: 'wifi',
+    RESTAURANT: 'coffee',
+    ROOM_SERVICE: 'home',
+  };
+
   toFloat(value: string) {
     return parseFloat(value);
   }

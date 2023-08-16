@@ -16,8 +16,21 @@
       </h5>
       <div>
         <div nz-row nzAlign="middle" class="card-rate">
-          <small>{{ toFloat(hotel.stars).toFixed(1) }}</small>
-          <nz-rate [ngModel]="toFloat(hotel.stars)" nzDisabled></nz-rate>
+          <div nz-col class="stars-group">
+            <small>{{ toFloat(hotel.stars).toFixed(1) }}</small>
+            <nz-rate [ngModel]="toFloat(hotel.stars)" nzDisabled></nz-rate>
+          </div>
+          <div nz-col class="amenities">
+            <div *ngFor="let amenitie of hotel.amenities">
+              <span nz-tooltip [nzTooltipTitle]="amenitie.label">
+                <span
+                  nz-icon
+                  [nzType]="amenities[amenitie.key]"
+                  nzTheme="outline"
+                ></span
+              ></span>
+            </div>
+          </div>
         </div>
         <div class="badge" *ngIf="hotel.hasRefundableRoom">Reembolsável</div>
       </div>
