@@ -1,4 +1,4 @@
-.ant-card {
+.ant-card.hotel-card {
   border-radius: 8px;
   height: 272px;
 
@@ -16,14 +16,33 @@
     border-left: 1px solid #c4c4c4;
   }
 
-  h3 {
-    margin-bottom: 4px;
+  .card-rate {
+    .ant-rate {
+      display: flex;
+      align-items: center;
+      margin: 0 8px;
+    }
+
+    .ant-rate,
+    small {
+      font-size: 12px;
+    }
   }
 
-  h5 {
+  h3 {
+    line-height: 1;
+    margin-bottom: 4px;
+
+    small {
+      font-size: 14px;
+    }
+  }
+
+  h5.ant-typography {
     color: #7e7e7e;
     font-weight: 400;
-    margin: 0 0 16px;
+    margin-top: 0;
+    margin-bottom: 16px;
   }
 
   span {
@@ -36,6 +55,7 @@
     background-color: #7e7e7e;
     padding: 2px 20px;
     display: inline-block;
+    margin-top: 8px;
   }
 
   .slick-list,
@@ -53,6 +73,7 @@
       img {
         max-width: 100%;
         height: 100%;
+        object-fit: cover;
         border-radius: 8px 0 0 8px;
       }
     }

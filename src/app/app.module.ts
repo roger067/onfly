@@ -13,6 +13,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
+import { NzRateModule } from 'ng-zorro-antd/rate';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -45,6 +46,7 @@ import { HotelCardComponent } from './hotel-card/hotel-card.component';
     NzDropDownModule,
     NzIconModule,
     NzCarouselModule,
+    NzRateModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

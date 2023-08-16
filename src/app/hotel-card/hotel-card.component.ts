@@ -60,4 +60,15 @@ export class HotelCardComponent {
     roomsQuantity: 2,
     price: 100,
   };
+
+  toFloat(value: string) {
+    return parseFloat(value);
+  }
+
+  convertToCurrency(price: number) {
+    return Intl.NumberFormat('pt-BR', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
+    }).format(price);
+  }
 }
