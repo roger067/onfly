@@ -4,5 +4,29 @@
     <nz-breadcrumb-item>Hotéis</nz-breadcrumb-item>
     <nz-breadcrumb-item>Hospedagem em</nz-breadcrumb-item>
   </nz-breadcrumb>
-  <div><span nz-typography>Organizado por</span></div>
+  <div>
+    <span nz-typography>Organizado por</span
+    ><a nz-dropdown [nzDropdownMenu]="menu" nzPlacement="bottomRight">
+      <i>{{ orderBy === "price" ? "Recomendados" : "Melhor avaliados" }}</i>
+      <span nz-icon nzType="down"></span>
+    </a>
+    <nz-dropdown-menu #menu="nzDropdownMenu">
+      <ul nz-menu nzSelectable>
+        <li
+          nz-menu-item
+          [nzSelected]="orderBy === 'price'"
+          (click)="onChangeFilter('price')"
+        >
+          Recomendados
+        </li>
+        <li
+          nz-menu-item
+          [nzSelected]="orderBy === 'rate'"
+          (click)="onChangeFilter('rate')"
+        >
+          Melhor avaliados
+        </li>
+      </ul>
+    </nz-dropdown-menu>
+  </div>
 </div>

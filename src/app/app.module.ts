@@ -10,6 +10,8 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzBreadCrumbModule } from 'ng-zorro-antd/breadcrumb';
 import { NzTypographyModule } from 'ng-zorro-antd/typography';
+import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -37,6 +39,8 @@ import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-
     FormsModule,
     BrowserAnimationsModule,
     NzTypographyModule,
+    NzDropDownModule,
+    NzIconModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
