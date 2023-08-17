@@ -24,10 +24,10 @@ import { NzIconModule, NZ_ICONS } from 'ng-zorro-antd/icon';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
-import { SearchHotelComponent } from './search-hotel/search-hotel.component';
-import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-and-navigation.component';
-import { HotelCardComponent } from './hotel-card/hotel-card.component';
-import { HotelDrawerComponent } from './hotel-drawer/hotel-drawer.component';
+import { SearchHotelComponent } from './pages/hotel-list/components/search-hotel/search-hotel.component';
+import { FiltersAndNavigationComponent } from './pages/hotel-list/components/filters-and-navigation/filters-and-navigation.component';
+import { HotelCardComponent } from './pages/hotel-list/components/hotel-card/hotel-card.component';
+import { HotelDrawerComponent } from './pages/hotel-detail/components/hotel-drawer/hotel-drawer.component';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
