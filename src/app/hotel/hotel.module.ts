@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterModule } from '@angular/router';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -51,6 +52,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     HotelDrawerComponent,
   ],
   imports: [
+    RouterModule,
     FormsModule,
     BrowserAnimationsModule,
     NzButtonModule,

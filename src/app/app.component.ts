@@ -2,8 +2,9 @@ import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
+  template: ` <app-navbar></app-navbar>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>`,
 })
-export class AppComponent {
-  title = 'onFly';
-}
+export class AppComponent {}

@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-drawer',
@@ -7,6 +8,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   styleUrls: ['./hotel-drawer.component.scss'],
 })
 export class HotelDrawerComponent {
+  constructor(private router: Router) {}
+
   visible = true;
 
   hotel = {
@@ -73,5 +76,7 @@ export class HotelDrawerComponent {
     return parseFloat(value);
   }
 
-  close() {}
+  close() {
+    this.router.navigate(['/hotel-list']);
+  }
 }

@@ -43,9 +43,11 @@
       <span>R${{ convertToCurrency(hotel.price / 3) }} /noite</span>
       <span>Impostos inclusos</span>
       <div style="margin-top: 40px">
-        <button nz-button nzType="primary" nzShape="round" nzSize="large">
-          Selecionar
-        </button>
+        <a [routerLink]="[hotel.id]">
+          <button nz-button nzType="primary" nzShape="round" nzSize="large">
+            Selecionar
+          </button>
+        </a>
       </div>
     </div>
   </div>
