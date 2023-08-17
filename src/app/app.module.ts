@@ -14,6 +14,7 @@ import { NzDropDownModule } from 'ng-zorro-antd/dropdown';
 import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
+import { NzDrawerModule } from 'ng-zorro-antd/drawer';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
@@ -26,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { SearchHotelComponent } from './search-hotel/search-hotel.component';
 import { FiltersAndNavigationComponent } from './filters-and-navigation/filters-and-navigation.component';
 import { HotelCardComponent } from './hotel-card/hotel-card.component';
+import { HotelDrawerComponent } from './hotel-drawer/hotel-drawer.component';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -43,6 +45,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => {
     SearchHotelComponent,
     FiltersAndNavigationComponent,
     HotelCardComponent,
+    HotelDrawerComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,6 +65,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map((key) => {
     NzCarouselModule,
     NzRateModule,
     NzToolTipModule,
+    NzDrawerModule,
   ],
   providers: [
     {

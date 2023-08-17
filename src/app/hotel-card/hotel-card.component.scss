@@ -13,7 +13,7 @@
   }
 
   .card-price {
-    border-left: 1px solid #c4c4c4;
+    border-left: 1px solid #e2e2e2;
   }
 
   .card-rate {
@@ -37,10 +37,6 @@
   h3 {
     line-height: 1;
     margin-bottom: 4px;
-
-    small {
-      font-size: 14px;
-    }
   }
 
   h5.ant-typography {
@@ -99,5 +95,11 @@
         border-radius: 8px 0 0 8px;
       }
     }
+  }
+}
+
+.slick-slide:last-child {
+  img {
+    object-fit: contain;
   }
 }
