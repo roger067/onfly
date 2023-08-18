@@ -9,6 +9,8 @@ import { Place } from '../shared/module/place';
 export class PlaceService {
   private PlaceUrl = 'http://localhost:3000/place';
 
+  private placeFiltered?: number;
+
   constructor(private http: HttpClient) {}
 
   getPlaceOptions(): Observable<Place[]> {
@@ -16,5 +18,13 @@ export class PlaceService {
       (res) => res,
       (error) => error
     );
+  }
+
+  getPlaceFiltered() {
+    return this.placeFiltered;
+  }
+
+  setPlaceFiltered(placeValue?: number) {
+    this.placeFiltered = placeValue;
   }
 }

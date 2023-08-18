@@ -1,5 +1,9 @@
 # OnFly
 
+# Run fake api
+
+The jsons that were asked to be used are in the fake-api folder, in the api.json file. To run the api, it is necessary to install `json-server` globally, by running the following command: `npm install -g json-server`. To execute the server, run: `json-server --watch api.json`.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.0.
 
 ## Development server

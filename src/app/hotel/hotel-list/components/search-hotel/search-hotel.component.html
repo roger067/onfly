@@ -1,9 +1,10 @@
-<nz-card nzTitle="Reservar Hotel" nzBorderless>
-  <nz-form-label nzFor="city">Destino</nz-form-label>
+<nz-card nzTitle="Reservar Hotel" class="search-card" nzBorderless>
+  <nz-form-label nzFor="city" nzNoColon>Destino<small>*</small></nz-form-label>
   <input
     nz-input
     [nzAutocomplete]="auto"
     [(ngModel)]="inputValue"
+    placeholder="Ex: Belo Horizonte"
     name="city"
     id="city"
     (ngModelChange)="onChangeCityValue($event)"

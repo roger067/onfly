@@ -1,11 +1,24 @@
-.anticon {
-  margin-left: 8px;
-}
-
-a {
-  font-weight: bold;
-}
-
-.ant-row {
+.ant-row.filters {
   margin: 24px 0;
+
+  .anticon {
+    margin-left: 8px;
+  }
+
+  a {
+    font-weight: bold;
+  }
+
+  nz-breadcrumb-item {
+    color: #1890ff;
+
+    &:last-child {
+      color: #7e7e7e;
+    }
+  }
+
+  .ant-breadcrumb-separator {
+    margin: 0 2px;
+    color: #1890ff;
+  }
 }

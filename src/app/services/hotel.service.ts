@@ -12,9 +12,13 @@ export class HotelService {
 
   constructor(private http: HttpClient) {}
 
-  getHotelList(): Observable<HotelResponse[]> {
+  getHotelList(placeFiltered?: number): Observable<HotelResponse[]> {
     return this.http.get<HotelResponse[]>(this.hotelUrl).pipe(
-      (res) => res,
+      map((res) => {
+        if (!placeFiltered) return res;
+
+        return res.filter((hotel) => hotel.placeId === placeFiltered);
+      }),
       (error) => error
     );
   }

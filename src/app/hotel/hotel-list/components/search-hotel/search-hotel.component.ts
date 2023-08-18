@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { PlaceService } from 'src/app/services/place.service';
 import { Place } from 'src/app/shared/module/place';
 
 @Component({
   selector: 'app-search-hotel',
   templateUrl: './search-hotel.component.html',
+  encapsulation: ViewEncapsulation.None,
   styleUrls: ['./search-hotel.component.scss'],
 })
 export class SearchHotelComponent {
@@ -27,6 +28,12 @@ export class SearchHotelComponent {
 
   onSearchCity() {
     this.hasSearched = true;
+
+    const placeFiltered = this.placeOptions.find(
+      (option) => option.placeId === Number(this.inputValue)
+    )?.placeId;
+
+    this.placeService.setPlaceFiltered(placeFiltered);
   }
 
   onChangeCityValue(value: string) {

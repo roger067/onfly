@@ -1,12 +1,36 @@
-.ant-card {
+.search-card.ant-card {
   border-radius: 8px;
   margin: 32px 0 0;
-}
 
-input {
-  border-radius: 8px;
-}
+  .ant-card-head {
+    padding: 0 16px;
+    min-height: 32px;
+    border-bottom: 1px solid #7e7e7e;
+  }
 
-button {
-  margin-top: 16px;
+  .ant-card-head-title {
+    padding: 4px 0;
+    font-size: 22px;
+  }
+
+  label {
+    font-weight: 500;
+    color: #7e7e7e;
+
+    small {
+      color: #ff3434;
+    }
+  }
+
+  .ant-card-body {
+    padding: 16px;
+  }
+
+  input {
+    border-radius: 4px;
+  }
+
+  button {
+    margin-top: 16px;
+  }
 }
