@@ -1,45 +1,21 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
-export interface Hotel {
-  id: number;
-  favorite: boolean;
-  name: string;
-  description: string;
-  stars: string;
-  thumb: string;
-  amenities: {
-    key: string;
-    label: string;
-  }[];
-  hasBreakFast: boolean;
-  hasRefundableRoom: boolean;
-  hasAgreement: boolean;
-  notRefundable: boolean;
-  address: {
-    street: string;
-    number: string;
-    district: string;
-    city: string;
-    state: string;
-    country: string;
-    zipCode: string;
-    fullAddress: string;
-  };
-  images: string[];
-  deals: number;
-  roomsQuantity: number;
-  price: number;
-}
+import { HotelResponse } from '../shared/module/hotel';
 
 @Injectable({
   providedIn: 'root',
 })
 export class HotelService {
-  private hotelList: Hotel[] = [];
+  private hotelUrl = 'http://localhost:3000/hotelList';
 
-  constructor() {}
+  constructor(private http: HttpClient) {}
 
-  getHotelList() {
-    return this.hotelList;
+  getHotelList(): Observable<HotelResponse[]> {
+    return this.http.get<HotelResponse[]>(this.hotelUrl).pipe(
+      (res) => res,
+      (error) => error
+    );
   }
 }

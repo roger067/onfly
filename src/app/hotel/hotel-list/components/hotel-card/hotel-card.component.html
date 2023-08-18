@@ -2,26 +2,29 @@
   <div nz-row>
     <div nz-col nzSpan="8">
       <nz-carousel nzEffect="fade">
-        <div nz-carousel-content *ngFor="let image of hotel.images">
+        <div nz-carousel-content *ngFor="let image of hotel?.images">
           <div class="image-wrapper">
-            <img [src]="image" alt="hotel" />
+            <img [ngSrc]="image" alt="hotel" fill />
           </div>
         </div>
       </nz-carousel>
     </div>
     <div nz-col nzSpan="10" class="card-details">
-      <h3 nz-typography>{{ hotel.name }}</h3>
+      <h3 nz-typography>{{ hotel?.name }}</h3>
       <h5 nz-typography>
-        {{ hotel.address.city }}, {{ hotel.address.district }}
+        {{ hotel?.address?.city }}, {{ hotel?.address?.district }}
       </h5>
       <div>
         <div nz-row nzAlign="middle" class="card-rate">
           <div nz-col class="stars-group">
-            <small>{{ toFloat(hotel.stars).toFixed(1) }}</small>
-            <nz-rate [ngModel]="toFloat(hotel.stars)" nzDisabled></nz-rate>
+            <small>{{ toFloat(hotel?.stars || "0").toFixed(1) }}</small>
+            <nz-rate
+              [ngModel]="toFloat(hotel?.stars || '0')"
+              nzDisabled
+            ></nz-rate>
           </div>
           <div nz-col class="amenities">
-            <div *ngFor="let amenitie of hotel.amenities">
+            <div *ngFor="let amenitie of hotel?.amenities">
               <span nz-tooltip [nzTooltipTitle]="amenitie.label">
                 <span
                   nz-icon
@@ -32,18 +35,18 @@
             </div>
           </div>
         </div>
-        <div class="badge" *ngIf="hotel.hasRefundableRoom">Reembolsável</div>
+        <div class="badge" *ngIf="hotel?.hasRefundableRoom">Reembolsável</div>
       </div>
     </div>
     <div nz-col nzSpan="6" class="card-price">
       <small>A partir de:</small>
       <h3 nz-typography>
-        <small>R$</small>{{ convertToCurrency(hotel.price) }}
+        <small>R$</small>{{ convertToCurrency(hotel?.price || 0) }}
       </h3>
-      <span>R${{ convertToCurrency(hotel.price / 3) }} /noite</span>
+      <span>R${{ convertToCurrency((hotel?.price || 0) / 3) }} /noite</span>
       <span>Impostos inclusos</span>
       <div style="margin-top: 40px">
-        <a [routerLink]="[hotel.id]">
+        <a [routerLink]="[hotel?.id]">
           <button nz-button nzType="primary" nzShape="round" nzSize="large">
             Selecionar
           </button>

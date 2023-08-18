@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -16,6 +17,10 @@ import { NzCarouselModule } from 'ng-zorro-antd/carousel';
 import { NzRateModule } from 'ng-zorro-antd/rate';
 import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { NzDrawerModule } from 'ng-zorro-antd/drawer';
+import { NzListModule } from 'ng-zorro-antd/list';
+import { ScrollingModule } from '@angular/cdk/scrolling';
+import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
+import { NgOptimizedImage } from '@angular/common';
 
 import { IconDefinition } from '@ant-design/icons-angular';
 import * as AllIcons from '@ant-design/icons-angular/icons';
@@ -53,9 +58,13 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     HotelDrawerComponent,
   ],
   imports: [
+    ScrollingModule,
+    CdkVirtualScrollViewport,
+    HttpClientModule,
     RouterModule,
     FormsModule,
     CommonModule,
+    NgOptimizedImage,
     NzButtonModule,
     NzCardModule,
     NzFormModule,
@@ -71,6 +80,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     NzToolTipModule,
     NzDrawerModule,
     HotelRoutingModule,
+    NzListModule,
   ],
   providers: [
     {

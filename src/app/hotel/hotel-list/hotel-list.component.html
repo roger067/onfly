@@ -1,4 +1,8 @@
 <app-search-hotel></app-search-hotel>
 <app-filters-and-navigation></app-filters-and-navigation>
-<app-hotel-card></app-hotel-card>
+<div *ngFor="let item of hotelList">
+  <div *ngFor="let hotel of item.hotels">
+    <app-hotel-card [hotel]="hotel"></app-hotel-card>
+  </div>
+</div>
 <router-outlet></router-outlet>
