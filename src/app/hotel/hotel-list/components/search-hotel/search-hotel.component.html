@@ -8,7 +8,13 @@
     id="city"
     (ngModelChange)="onChangeCityValue($event)"
   />
-  <nz-autocomplete [nzDataSource]="filteredOptions" #auto></nz-autocomplete>
+  <nz-autocomplete #auto
+    ><nz-auto-option
+      *ngFor="let option of filteredOptions"
+      [nzValue]="option.name"
+      >{{ option.name }}, {{ option.state.name }}</nz-auto-option
+    ></nz-autocomplete
+  >
 
   <div nz-row nzJustify="end">
     <button

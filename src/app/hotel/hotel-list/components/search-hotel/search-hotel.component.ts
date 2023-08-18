@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { PlaceService } from 'src/app/services/place.service';
+import { Place } from 'src/app/shared/module/place';
 
 @Component({
   selector: 'app-search-hotel',
@@ -7,18 +9,26 @@ import { Component } from '@angular/core';
 })
 export class SearchHotelComponent {
   inputValue?: string;
-  filteredOptions: string[] = [];
-  options = ['Belo Horizonte', 'Rio de Janeiro', 'São Paulo'];
+  filteredOptions: Place[] = [];
+  placeOptions: Place[] = [];
 
-  constructor() {
-    this.filteredOptions = this.options;
+  constructor(private placeService: PlaceService) {}
+
+  ngOnInit(): void {
+    this.placeService.getPlaceOptions().subscribe({
+      next: (res) => {
+        this.placeOptions = res;
+        this.filteredOptions = res;
+      },
+      error: (err) => console.log(err),
+    });
   }
 
   onSearchCity() {}
 
   onChangeCityValue(value: string) {
-    this.filteredOptions = this.options.filter(
-      (option) => option.toLowerCase().indexOf(value.toLowerCase()) !== -1
+    this.filteredOptions = this.placeOptions.filter(
+      (option) => option.name.toLowerCase().indexOf(value.toLowerCase()) !== -1
     );
   }
 }
