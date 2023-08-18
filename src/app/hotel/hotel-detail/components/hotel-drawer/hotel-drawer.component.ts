@@ -1,4 +1,9 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import {
+  AfterViewInit,
+  ChangeDetectorRef,
+  Component,
+  ViewEncapsulation,
+} from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,10 +12,10 @@ import { Router } from '@angular/router';
   templateUrl: './hotel-drawer.component.html',
   styleUrls: ['./hotel-drawer.component.scss'],
 })
-export class HotelDrawerComponent {
-  constructor(private router: Router) {}
+export class HotelDrawerComponent implements AfterViewInit {
+  constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
 
-  visible = true;
+  visible = false;
 
   hotel = {
     id: 430,
@@ -71,6 +76,11 @@ export class HotelDrawerComponent {
     RESTAURANT: 'coffee',
     ROOM_SERVICE: 'home',
   };
+
+  ngAfterViewInit(): void {
+    this.visible = true;
+    this.cdRef.detectChanges();
+  }
 
   toFloat(value: string) {
     return parseFloat(value);
