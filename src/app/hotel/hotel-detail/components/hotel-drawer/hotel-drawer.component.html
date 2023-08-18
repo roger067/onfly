@@ -7,18 +7,18 @@
 >
   <ng-container *nzDrawerContent>
     <div nz-col class="stars-group">
-      <small>{{ toFloat(hotel.stars).toFixed(1) }}</small>
-      <nz-rate [ngModel]="toFloat(hotel.stars)" nzDisabled></nz-rate>
+      <small>{{ toFloat(hotel?.stars || "0").toFixed(1) }}</small>
+      <nz-rate [ngModel]="toFloat(hotel?.stars || '0')" nzDisabled></nz-rate>
     </div>
-    <h3 nz-typography>{{ hotel.name }}</h3>
+    <h3 nz-typography>{{ hotel?.name }}</h3>
     <h5 nz-typography>
-      {{ hotel.address.fullAddress }}, {{ hotel.address.city }} -
-      {{ hotel.address.state
-      }}{{ hotel.address.zipCode ? ", " + hotel.address.zipCode : "" }}
+      {{ hotel?.address?.fullAddress }}, {{ hotel?.address?.city }} -
+      {{ hotel?.address?.state
+      }}{{ hotel?.address?.zipCode ? ", " + hotel?.address?.zipCode : "" }}
     </h5>
     <div class="carousel-wrapper">
       <nz-carousel nzEffect="fade">
-        <div nz-carousel-content *ngFor="let image of hotel.images">
+        <div nz-carousel-content *ngFor="let image of hotel?.images">
           <div class="image-wrapper">
             <img [src]="image" alt="hotel" />
           </div>
@@ -28,7 +28,11 @@
     <h4 nz-typography>Facilidades do hotel</h4>
     <div class="hotel-amenities">
       <div nz-row>
-        <div nz-col nzSpan="6" *ngFor="let amenitie of hotel.amenities">
+        <div
+          nz-col
+          nzSpan="6"
+          *ngFor="let amenitie of hotel?.amenities?.slice(0, amenitiesToShow)"
+        >
           <span
             nz-icon
             [nzType]="amenities[amenitie.key]"
@@ -37,13 +41,27 @@
           <span>{{ amenitie.label }}</span>
         </div>
       </div>
-      <div nz-col nzSpan="12" nzOffset="6" *ngIf="hotel.amenities.length > 4">
-        <button nz-button nzType="primary" nzShape="round" nzGhost>
+      <div
+        nz-col
+        nzSpan="12"
+        nzOffset="6"
+        *ngIf="
+          (hotel?.amenities?.length || 0) > 4 &&
+          amenitiesToShow !== hotel?.amenities?.length
+        "
+      >
+        <button
+          nz-button
+          nzType="primary"
+          nzShape="round"
+          nzGhost
+          (click)="showMoreAmenities()"
+        >
           Mostrar todas as facilidades
         </button>
       </div>
     </div>
     <h4 nz-typography>Conheça um pouco mais</h4>
-    <span nz-typography>{{ hotel.description }}</span>
+    <span nz-typography>{{ hotel?.description }}</span>
   </ng-container>
 </nz-drawer>

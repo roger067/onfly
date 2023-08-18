@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 
-import { HotelResponse } from '../shared/module/hotel';
+import { Hotel, HotelResponse } from '../shared/module/hotel';
 
 @Injectable({
   providedIn: 'root',
@@ -15,6 +15,25 @@ export class HotelService {
   getHotelList(): Observable<HotelResponse[]> {
     return this.http.get<HotelResponse[]>(this.hotelUrl).pipe(
       (res) => res,
+      (error) => error
+    );
+  }
+
+  getHotelListById(id: string): Observable<Hotel | undefined> {
+    return this.http.get<HotelResponse[]>(this.hotelUrl).pipe(
+      map((res: HotelResponse[]) => {
+        const hotelItem = res.find((item) =>
+          item.hotels.some((hotel) => hotel.id === Number(id))
+        );
+        if (hotelItem) {
+          const matchingHotel = hotelItem.hotels.find(
+            (hotel) => hotel.id === Number(id)
+          );
+          return matchingHotel;
+        } else {
+          throw new Error(`Hotel with ID ${id} not found.`);
+        }
+      }),
       (error) => error
     );
   }

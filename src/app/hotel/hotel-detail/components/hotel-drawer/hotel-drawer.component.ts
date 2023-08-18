@@ -4,7 +4,9 @@ import {
   Component,
   ViewEncapsulation,
 } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HotelService } from 'src/app/services/hotel.service';
+import { Hotel } from 'src/app/shared/module/hotel';
 
 @Component({
   selector: 'app-hotel-drawer',
@@ -13,68 +15,43 @@ import { Router } from '@angular/router';
   styleUrls: ['./hotel-drawer.component.scss'],
 })
 export class HotelDrawerComponent implements AfterViewInit {
-  constructor(private router: Router, private cdRef: ChangeDetectorRef) {}
-
+  public hotel?: Hotel;
   visible = false;
+  amenitiesToShow = 4;
 
-  hotel = {
-    id: 430,
-    favorite: true,
-    name: 'Nacional Inn Belo Horizonte',
-    description:
-      'Localizado no coração comercial e financeiro de Belo Horizonte, próximo aos principais centros de decisão da capital mineira, centros de convenções (Minascentro, Expominas), principais avenidas da cidade, fácil acesso as saídas e entradas para a cidade e ',
-    stars: '3',
-    thumb: 'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_10.JPG',
-    amenities: [
-      {
-        key: 'WI_FI',
-        label: 'Internet',
-      },
-      {
-        key: 'RESTAURANT',
-        label: 'Restaurante',
-      },
-      {
-        key: 'ROOM_SERVICE',
-        label: 'Serviço de quarto',
-      },
-    ],
-    hasBreakFast: true,
-    hasRefundableRoom: true,
-    hasAgreement: false,
-    nonRefundable: null,
-    address: {
-      street: 'Rua Espírito Santo',
-      number: '215',
-      district: 'Centro',
-      city: 'Belo Horizonte',
-      state: 'MG',
-      country: 'BR',
-      zipCode: null,
-      fullAddress: 'Rua Espírito Santo, 215 - Centro',
-    },
-    images: [
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_10.JPG',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_11.JPG',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_12.JPG',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_13.JPG',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_3.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_5.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_6.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_7.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_8.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/10415/10415_9.jpg',
-      'https://s3.amazonaws.com/e-htl/uploads/hotels/logotipos/10415.jpg',
-    ],
-    deals: null,
-    roomsQuantity: 2,
-    price: 100,
-  };
+  constructor(
+    private hotelDetail: HotelService,
+    private router: Router,
+    private cdRef: ChangeDetectorRef,
+    private route: ActivatedRoute
+  ) {}
+
+  ngOnInit(): void {
+    this.route.params.subscribe((params) => {
+      const id = params['id'];
+
+      this.hotelDetail.getHotelListById(id).subscribe({
+        next: (res) => (this.hotel = res),
+        error: (err) => console.log(err),
+      });
+    });
+  }
 
   amenities: { [key: string]: string } = {
     WI_FI: 'wifi',
-    RESTAURANT: 'coffee',
+    RESTAURANT: 'rest',
     ROOM_SERVICE: 'home',
+    PUB: 'shop',
+    POOL: 'experiment',
+    PETS: 'bug',
+    AIR_CONDITIONING: '',
+    SAFE: 'safety',
+    PARKING: 'car',
+    LAUNDRY: 'skin',
+    BREAKFAST: 'coffee',
+    FITNESS_CENTER: 'sliders',
+    MEETING_ROOM: 'audio',
+    STEAM_ROOM: 'fire',
   };
 
   ngAfterViewInit(): void {
@@ -88,5 +65,9 @@ export class HotelDrawerComponent implements AfterViewInit {
 
   close() {
     this.router.navigate(['/hotel-list']);
+  }
+
+  showMoreAmenities() {
+    this.amenitiesToShow = this.hotel?.amenities?.length || 4;
   }
 }
