@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -8,7 +9,12 @@ import { HotelModule } from './hotel/hotel.module';
 
 @NgModule({
   declarations: [AppComponent, NavbarComponent],
-  imports: [BrowserModule, AppRoutingModule, HotelModule],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    HotelModule,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
 import { NzButtonModule } from 'ng-zorro-antd/button';
 import { NzCardModule } from 'ng-zorro-antd/card';
@@ -27,6 +27,7 @@ import { FiltersAndNavigationComponent } from './hotel-list/components/filters-a
 import { HotelCardComponent } from './hotel-list/components/hotel-card/hotel-card.component';
 import { HotelListComponent } from './hotel-list/hotel.list.component';
 import { HotelDrawerComponent } from './hotel-detail/components/hotel-drawer/hotel-drawer.component';
+import { HotelRoutingModule } from './hotel-routing.module';
 
 const antDesignIcons = AllIcons as {
   [key: string]: IconDefinition;
@@ -54,7 +55,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
   imports: [
     RouterModule,
     FormsModule,
-    BrowserAnimationsModule,
+    CommonModule,
     NzButtonModule,
     NzCardModule,
     NzFormModule,
@@ -69,6 +70,7 @@ const icons: IconDefinition[] = Object.keys(antDesignIcons).map(
     NzRateModule,
     NzToolTipModule,
     NzDrawerModule,
+    HotelRoutingModule,
   ],
   providers: [
     {
