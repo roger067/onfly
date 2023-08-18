@@ -3,6 +3,7 @@
   [nzVisible]="visible"
   nzPlacement="right"
   nzSize="large"
+  class="drawer"
   (nzOnClose)="close()"
 >
   <ng-container *nzDrawerContent>
@@ -30,7 +31,8 @@
       <div nz-row>
         <div
           nz-col
-          nzSpan="6"
+          nzMd="6"
+          nzSm="12"
           *ngFor="let amenitie of hotel?.amenities?.slice(0, amenitiesToShow)"
         >
           <span

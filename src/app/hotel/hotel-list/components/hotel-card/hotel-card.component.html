@@ -1,6 +1,6 @@
 <nz-card nzBorderless [nzBodyStyle]="{ padding: 0 }" class="hotel-card">
   <div nz-row>
-    <div nz-col nzSpan="8">
+    <div nz-col nzMd="8">
       <nz-carousel nzEffect="fade">
         <div nz-carousel-content *ngFor="let image of hotel?.images">
           <div class="image-wrapper">
@@ -9,7 +9,7 @@
         </div>
       </nz-carousel>
     </div>
-    <div nz-col nzSpan="10" class="card-details">
+    <div nz-col nzMd="10" nzSm="16" class="card-details">
       <h3 nz-typography>{{ hotel?.name }}</h3>
       <h5 nz-typography>
         {{ hotel?.address?.city }}, {{ hotel?.address?.district }}
@@ -38,13 +38,15 @@
         <div class="badge" *ngIf="hotel?.hasRefundableRoom">Reembolsável</div>
       </div>
     </div>
-    <div nz-col nzSpan="6" class="card-price">
-      <small>A partir de:</small>
-      <h3 nz-typography>
-        <small>R$</small>{{ convertToCurrency(hotel?.price || 0) }}
-      </h3>
-      <span>R${{ convertToCurrency((hotel?.price || 0) / 3) }} /noite</span>
-      <span>Impostos inclusos</span>
+    <div nz-col nzMd="6" nzSm="16" class="card-price">
+      <div class="column-price">
+        <small>A partir de:</small>
+        <h3 nz-typography>
+          <small>R$</small>{{ convertToCurrency(hotel?.price || 0) }}
+        </h3>
+        <span>R${{ convertToCurrency((hotel?.price || 0) / 3) }} /noite</span>
+        <span>Impostos inclusos</span>
+      </div>
       <div style="margin-top: 40px">
         <a [routerLink]="[hotel?.id]">
           <button nz-button nzType="primary" nzShape="round" nzSize="large">
