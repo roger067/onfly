@@ -8,6 +8,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class FiltersAndNavigationComponent {
   orderBy = 'price';
+  placeName = '';
 
   onChangeFilter(filter: 'price' | 'rate') {
     this.orderBy = filter;
