@@ -9,6 +9,7 @@ import { Place } from 'src/app/shared/module/place';
 })
 export class SearchHotelComponent {
   inputValue?: string;
+  hasSearched = false;
   filteredOptions: Place[] = [];
   placeOptions: Place[] = [];
 
@@ -24,7 +25,9 @@ export class SearchHotelComponent {
     });
   }
 
-  onSearchCity() {}
+  onSearchCity() {
+    this.hasSearched = true;
+  }
 
   onChangeCityValue(value: string) {
     this.filteredOptions = this.placeOptions.filter(

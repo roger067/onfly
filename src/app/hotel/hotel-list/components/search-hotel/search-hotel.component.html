@@ -25,7 +25,7 @@
       (click)="onSearchCity()"
       [disabled]="!inputValue"
     >
-      Alterar busca
+      {{ hasSearched ? "Alterar Busca" : "Buscar" }}
     </button>
   </div>
 </nz-card>
