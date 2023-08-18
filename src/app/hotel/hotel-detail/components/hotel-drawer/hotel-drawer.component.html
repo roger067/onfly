@@ -33,6 +33,7 @@
           nz-col
           nzMd="6"
           nzSm="12"
+          class="amenity"
           *ngFor="let amenitie of hotel?.amenities?.slice(0, amenitiesToShow)"
         >
           <span
@@ -45,8 +46,10 @@
       </div>
       <div
         nz-col
-        nzSpan="12"
-        nzOffset="6"
+        nzMd="12"
+        nzMdOffset="6"
+        nzSm="2"
+        nzSmOffset="20"
         *ngIf="
           (hotel?.amenities?.length || 0) > 4 &&
           amenitiesToShow !== hotel?.amenities?.length
