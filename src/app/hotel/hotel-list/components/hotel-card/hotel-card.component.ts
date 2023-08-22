@@ -1,4 +1,5 @@
-import { Component, Input, ViewEncapsulation } from '@angular/core';
+import { Component, Input, ViewChild, ViewEncapsulation } from '@angular/core';
+import { NzCarouselComponent } from 'ng-zorro-antd/carousel';
 import { Hotel } from 'src/app/shared/module/hotel';
 
 @Component({
@@ -8,6 +9,10 @@ import { Hotel } from 'src/app/shared/module/hotel';
   styleUrls: ['./hotel-card.component.scss'],
 })
 export class HotelCardComponent {
+  @ViewChild('carousel', { static: false }) carousel:
+    | NzCarouselComponent
+    | undefined;
+
   @Input() hotel: Hotel | undefined = undefined;
 
   amenities: { [key: string]: string } = {
@@ -36,5 +41,13 @@ export class HotelCardComponent {
       minimumFractionDigits: 2,
       maximumFractionDigits: 2,
     }).format(price);
+  }
+
+  goToNextSlide() {
+    this.carousel?.next();
+  }
+
+  goToPrevSlide() {
+    this.carousel?.pre();
   }
 }

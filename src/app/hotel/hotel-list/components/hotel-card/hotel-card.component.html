@@ -1,10 +1,24 @@
 <nz-card nzBorderless [nzBodyStyle]="{ padding: 0 }" class="hotel-card">
   <div nz-row>
     <div nz-col nzMd="8">
-      <nz-carousel nzEffect="fade">
+      <nz-carousel #carousel nzEffect="fade" nzDots="false">
         <div nz-carousel-content *ngFor="let image of hotel?.images">
           <div class="image-wrapper">
             <img [ngSrc]="image" alt="hotel" fill />
+            <span
+              nz-icon
+              nzType="left"
+              nzTheme="outline"
+              class="arrow-icon left"
+              (click)="goToPrevSlide()"
+            ></span>
+            <span
+              nz-icon
+              nzType="right"
+              nzTheme="outline"
+              class="arrow-icon right"
+              (click)="goToNextSlide()"
+            ></span>
           </div>
         </div>
       </nz-carousel>
